@@ -1,11 +1,14 @@
 
+import 'package:datingapp/Signup.dart';
+import 'package:datingapp/home.dart';
 import 'package:datingapp/main.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'Signup.dart';
+//import 'home.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
-
+ 
   @override
   State<Splash> createState() => _SplashState();
 }
@@ -14,14 +17,14 @@ class _SplashState extends State<Splash> {
   @override
   void initState () {
     super.initState();
-    //_navigatetohome();
+    _navigatetohome();
   }
 
 
   _navigatetohome() async {
      await Future.delayed(Duration(milliseconds: 3000), () {});
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MyHomePage(
-        title: 'Explore',
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MyHomePage (
+        title: "Explore",
       )));
   }
 
@@ -35,9 +38,7 @@ class _SplashState extends State<Splash> {
             children: [
               Container(
                 height: 100, width: 100,color:Colors.red,
-                
-                
-                ),
+                 ),
               Container(
                 child: Text(
                   'HeartStrings',
