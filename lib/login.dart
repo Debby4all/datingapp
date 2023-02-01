@@ -1,25 +1,31 @@
+import 'package:datingapp/home.dart';
 import 'package:flutter/material.dart';
- 
-void main() => runApp(MyApp());
- 
+
+void main() => runApp(const MyApp());
+
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
     );
   }
 }
- 
+
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
- 
+
 class _LoginPageState extends State<LoginPage> {
-  String "email", "password";
+  String email = 'ijeoma@gmail.com';
+  String password = '1234567';
   Widget _buildLogo() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -38,10 +44,10 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
- 
+
   Widget _buildEmailRow() {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: TextFormField(
         keyboardType: TextInputType.emailAddress,
         onChanged: (value) {
@@ -49,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
             email = value;
           });
         },
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
             prefixIcon: Icon(
               Icons.email,
               color: Colors.grey,
@@ -58,10 +64,10 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
- 
+
   Widget _buildPasswordRow() {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: TextFormField(
         keyboardType: TextInputType.text,
         obscureText: true,
@@ -70,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
             password = value;
           });
         },
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           prefixIcon: Icon(
             Icons.lock,
             color: Colors.grey,
@@ -80,20 +86,20 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
- 
+
   Widget _buildForgetPasswordButton() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        FlatButton(
+        TextButton(
           onPressed: () {},
-          child: Text("Forgot Password"),
+          child: const Text("Forgot Password"),
         ),
       ],
     );
   }
- 
+
   Widget _buildLoginButton() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -101,12 +107,14 @@ class _LoginPageState extends State<LoginPage> {
         Container(
           height: 1.4 * (MediaQuery.of(context).size.height / 20),
           width: 5 * (MediaQuery.of(context).size.width / 10),
-          margin: EdgeInsets.only(bottom: 20),
-          child: RaisedButton(
-            elevation: 5.0,
-            color: Colors.purple,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
+          margin: const EdgeInsets.only(bottom: 20),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              elevation: 5.0,
+              backgroundColor: Colors.purple,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
             ),
             onPressed: () {},
             child: Text(
@@ -122,14 +130,14 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
- 
+
   Widget _buildOrRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child: Text(
+          margin: const EdgeInsets.only(bottom: 20),
+          child: const Text(
             '- OR -',
             style: TextStyle(
               fontWeight: FontWeight.w400,
@@ -139,48 +147,71 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
- 
+
   Widget _buildSocialBtnRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         GestureDetector(
-          onTap: () {},
-          child: Container(
-            height: 60,
-            width: 60,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.grey,
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black26,
-                    offset: Offset(0, 2),
-                    blurRadius: 6.0)
+            onTap: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (_) => const MyHomePage(
+                    title: 'Explore',
+                  ),
+                ),
+                (route) => true,
+              );
+            },
+            child: Row(
+              children: [
+                Image.asset(
+                  'assets/images/google_icon.png',
+                  height: 24,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const Text(
+                  'Sign in with Google',
+                )
               ],
-            ),
-            child: Icon(
-              FontAwesomeIcons.google,
-              color: Colors.white,
-            ),
-          ),
-        )
+            )
+            // Container(
+            //   height: 60,
+            //   width: 60,
+            //   decoration: const BoxDecoration(
+            //     shape: BoxShape.circle,
+            //     color: Colors.grey,
+            //     boxShadow: [
+            //       BoxShadow(
+            //           color: Colors.black26,
+            //           offset: Offset(0, 2),
+            //           blurRadius: 6.0)
+            //     ],
+            //   ),
+            //   child: const Icon(
+            //     FontAwesomeIcons.google,
+            //     color: Colors.white,
+            //   ),
+            // ),
+            )
       ],
     );
   }
- 
+
   Widget _buildContainer() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         ClipRRect(
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(20),
           ),
           child: Container(
             height: MediaQuery.of(context).size.height * 0.6,
             width: MediaQuery.of(context).size.width * 0.8,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
             ),
             child: Column(
@@ -211,14 +242,14 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
- 
+
   Widget _buildSignUpBtn() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(top: 40),
-          child: FlatButton(
+          padding: const EdgeInsets.only(top: 40),
+          child: TextButton(
             onPressed: () {},
             child: RichText(
               text: TextSpan(children: [
@@ -245,34 +276,43 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
- 
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
-        backgroundColor: Color(0xfff2f3f7),
+        resizeToAvoidBottomInset: false,
+        backgroundColor: const Color(0xfff2f3f7),
         body: Stack(
           children: <Widget>[
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.7,
               width: MediaQuery.of(context).size.width,
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.grey,
                   borderRadius: BorderRadius.only(
-                    bottomLeft: const Radius.circular(70),
-                    bottomRight: const Radius.circular(70),
+                    bottomLeft: Radius.circular(70),
+                    bottomRight: Radius.circular(70),
                   ),
                 ),
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _buildLogo(),
-                _buildContainer(),
-                _buildSignUpBtn(),
-              ],
-            );
- }
+            SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  _buildLogo(),
+                  _buildContainer(),
+                  _buildSignUpBtn(),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+ // FlatButton -> TextButton and RaisedButton -> ElevatedButton

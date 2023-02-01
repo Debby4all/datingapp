@@ -1,31 +1,39 @@
-
-import 'package:datingapp/Signup.dart';
-import 'package:datingapp/home.dart';
-import 'package:datingapp/main.dart';
 import 'package:flutter/material.dart';
+
 import 'Signup.dart';
 //import 'home.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
- 
+
   @override
   State<Splash> createState() => _SplashState();
 }
 
 class _SplashState extends State<Splash> {
   @override
-  void initState () {
+  void initState() {
     super.initState();
     _navigatetohome();
   }
 
-
-  _navigatetohome() async {
-     await Future.delayed(Duration(milliseconds: 3000), () {});
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MyHomePage (
-        title: "Explore",
-      )));
+  _navigatetohome() {
+    Future.delayed(const Duration(milliseconds: 3000), () {
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => const MyHomePage(
+      //       title: "Explore",
+      //     ),
+      //   ),
+      // );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const MyRegister(),
+        ),
+      );
+    });
   }
 
   @override
@@ -36,15 +44,27 @@ class _SplashState extends State<Splash> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 100, width: 100,color:Colors.red,
-                 ),
-              Container(
-                child: Text(
-                  'HeartStrings',
-                   style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold,
-                )
-                  ),  
+              Image.asset(
+                'assets/images/hearts.png',
+                height: 100,
+                width: 100,
+              ),
+              Image.asset(
+                'assets/images/hearts-hugging-7735218-removebg-preview-1.jpg',
+                height: 100,
+                width: 100,
+              ),
+              // Container(
+              //   height: 100,
+              //   width: 100,
+              //   color: Colors.red,
+              // ),
+              const Text(
+                'HeartStrings',
+                style: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
@@ -53,3 +73,9 @@ class _SplashState extends State<Splash> {
     );
   }
 }
+
+// Ijeoma -> true
+// debby -> false
+// Ngozi -> true
+
+// flutter upgrade

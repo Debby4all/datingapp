@@ -18,6 +18,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+// assets/images/hearts-hugging-7735218-removebg-preview-1.jpg
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
